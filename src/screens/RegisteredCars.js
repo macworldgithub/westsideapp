@@ -8,7 +8,7 @@ import {
   Image,
 } from "react-native";
 import { FontAwesome, Feather } from "@expo/vector-icons";
-import Button from "../Screens/Button";
+import Button from "../screens/Button";
 
 const RegisteredCars = () => {
   return (

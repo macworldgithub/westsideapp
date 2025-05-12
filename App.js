@@ -4,11 +4,16 @@ import { StyleSheet, Text, View, Animated } from "react-native";
 import "./global.css";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Login from "./src/Screens/Login";
-import Splash from "./src/Screens/Splash";
-import RegisteredCars from "./src/Screens/RegisteredCars";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Login from "./src/screens/Login";
+import Splash from "./src/screens/Splash";
+
+import AuthTabs from "./src/navigation/AuthTabNavigation";
 
 const Stack = createStackNavigator();
+const RootStack = createStackNavigator();
+
+
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -60,8 +65,8 @@ export default function App() {
               )}
             </Stack.Screen>
           ) : (
-            // logged in → main tab navigator
-            <Stack.Screen name="registered-cars" component={RegisteredCars} />
+            // logged in → the 4-tab navigator
+            <RootStack.Screen name="AppTabs" component={AuthTabs} />
           )}
         </Stack.Navigator>
       </NavigationContainer>
