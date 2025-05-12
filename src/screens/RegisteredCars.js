@@ -1,46 +1,80 @@
-// /screens/Home.js
 import React from "react";
 import {
-  SafeAreaView,
-  ScrollView,
   View,
   Text,
+  TextInput,
+  ScrollView,
   TouchableOpacity,
+  Image,
 } from "react-native";
+import { FontAwesome, Feather } from "@expo/vector-icons";
+import Button from "../Screens/Button";
 
-export default function RegisteredCars() {
+const RegisteredCars = () => {
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <ScrollView contentContainerStyle={{ padding: 16 }}>
-        {/* Header */}
-        <Text className="text-2xl font-bold mb-6">Welcome to Westside App</Text>
+    <View className="flex-1 bg-black px-4 pt-8">
+      {/* Header Row */}
+      <View className="flex-row justify-between items-center mb-4">
+        <Text className="text-white text-xl font-semibold">
+          Registered Cars
+        </Text>
+        <Button />
+      </View>
 
-        {/* Quick Actions */}
-        <View className="bg-gray-100 rounded-lg p-4 mb-6">
-          <Text className="text-lg font-semibold mb-4">Quick Actions</Text>
-          <View className="flex-row space-x-4">
-            <TouchableOpacity className="flex-1 bg-blue-500 rounded-lg py-3 items-center">
-              <Text className="text-white font-medium">New Inspection</Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="flex-1 bg-green-500 rounded-lg py-3 items-center">
-              <Text className="text-white font-medium">View Reports</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+      {/* Search and Filter */}
+      <View className="flex-row items-center bg-white rounded-xl px-4 py-2 mb-4">
+        <FontAwesome name="search" size={18} color="#aaa" />
+        <TextInput
+          placeholder="Search any car with plate number"
+          placeholderTextColor="#aaa"
+          className="ml-2 text-white flex-1"
+        />
+        <Feather name="filter" size={20} color="#aaa" />
+      </View>
 
-        {/* Recent Activities */}
-        <Text className="text-xl font-semibold mb-4">Recent Activities</Text>
-        <View className="space-y-4">
-          <View className="bg-white shadow rounded-lg p-4">
-            <Text className="font-medium">Inspection #1234 Completed</Text>
-            <Text className="text-gray-500 mt-1">2 hours ago</Text>
-          </View>
-          <View className="bg-white shadow rounded-lg p-4">
-            <Text className="font-medium">Uploaded 5 Photos</Text>
-            <Text className="text-gray-500 mt-1">Yesterday</Text>
-          </View>
-        </View>
+      {/* Filter Tabs */}
+      <View className="flex-row mb-4 space-x-3">
+        <TouchableOpacity className="bg-white px-4 py-1 rounded-full">
+          <Text className="text-black text-sm font-semibold">On going</Text>
+        </TouchableOpacity>
+        <TouchableOpacity className="bg-[#2F2F2F] px-4 py-1 rounded-full">
+          <Text className="text-white text-sm font-semibold">Next 5 Days</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Car Cards */}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {Array(5)
+          .fill(null)
+          .map((_, index) => (
+            <View key={index} className="flex-row bg-white rounded-xl p-3 mb-4">
+              <Image
+                source={require("../../assets/Car.png")}
+                className="w-20 h-20 rounded-lg"
+                resizeMode="cover"
+              />
+              <View className="flex-1 ml-3 justify-between">
+                <Text className="text-black text-base font-bold">BMW</Text>
+                <Text className="text-gray-400 text-xs">
+                  Due on 11 sep, 2023
+                </Text>
+                <Text className="text-gray-400 text-xs">Paint Work</Text>
+                <Text className="text-gray-400 text-xs">👤 Chris</Text>
+                <Text className="text-gray-400 text-xs">📞 +1202-555-0877</Text>
+              </View>
+              <View className="justify-between ml-2">
+                <TouchableOpacity className="bg-gray-300 px-3 py-1 rounded-full">
+                  <Text className="text-black text-xs">Edit</Text>
+                </TouchableOpacity>
+                <TouchableOpacity className="bg-gray-300 px-3 py-1 rounded-full mb-4">
+                  <Text className="text-black text-xs">Work Order</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ))}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
-}
+};
+
+export default RegisteredCars;
