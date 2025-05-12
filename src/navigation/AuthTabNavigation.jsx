@@ -5,7 +5,7 @@ import HomeStackScreen from "./HomeStackNavigation";
 import HistoryStackScreen from "./HistoryStackNavigation";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import CustomTabBar from "../components/CustomTabBar";
+import CustomTabBar from "../Components/CustomTabBar";
 
 const Tab = createBottomTabNavigator();
 
