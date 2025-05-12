@@ -8,7 +8,7 @@ import {
   Image,
 } from "react-native";
 import { FontAwesome, Feather } from "@expo/vector-icons";
-import Button from "../Screens/Button";
+import Button from "../Components/Button";
 
 const RegisteredCars = () => {
   return (
@@ -63,11 +63,11 @@ const RegisteredCars = () => {
                 <Text className="text-gray-400 text-xs">📞 +1202-555-0877</Text>
               </View>
               <View className="justify-between ml-2">
-                <TouchableOpacity className="bg-gray-300 px-3 py-1 rounded-full">
-                  <Text className="text-black text-xs">Edit</Text>
+                <TouchableOpacity className="bg-gray-300 px-2 py-1 rounded-full">
+                  <Text className="text-black text-xs text-center">Edit</Text>
                 </TouchableOpacity>
-                <TouchableOpacity className="bg-gray-300 px-3 py-1 rounded-full mb-4">
-                  <Text className="text-black text-xs">Work Order</Text>
+                <TouchableOpacity className="bg-gray-300 px-4 py-1 rounded-full mb-9">
+                  <Text className="text-black text-xs text-center">Work Order</Text>
                 </TouchableOpacity>
               </View>
             </View>

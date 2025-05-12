@@ -5,7 +5,7 @@ const ImageWithButtons = () => (
   <View className="flex-row items-center bg-gray-200 p-4 rounded-xl mb-4">
     <Image
       source={{ uri: '/assets/Car.png' }}
-      className="w-16 h-16 rounded-full mr-4"
+      className="w-20 h-20 rounded-full mr-4"
     />
     <View>
       <TouchableOpacity className="bg-gray-500 py-1 px-4 rounded-full mb-2">
