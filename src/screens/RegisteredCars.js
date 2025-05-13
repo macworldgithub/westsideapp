@@ -7,29 +7,34 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 import Button from "../Components/Button";
+import Search from "../Components/Search";
 
 const RegisteredCars = () => {
   return (
-    <View className="flex-1 bg-black px-4 pt-8">
-      {/* Header Row */}
-     <View className="flex-row items-center space-x-2">
-        <Text className="text-white text-xl font-semibold">
-          Registered Cars
-        </Text>
-        <Button />
-      </View>
+    <View className="flex-1 bg-black px-4">
+      {/* Header Row inside SafeArea */}
+      <SafeAreaView>
+        <View className="flex-row justify-between items-center mb-4 pt-4">
+          <Text className="text-white text-xl font-semibold">
+            Registered Cars
+          </Text>
+          <Button />
+        </View>
+      </SafeAreaView>
 
       {/* Search and Filter */}
-      <View className="flex-row items-center bg-white rounded-xl px-4 py-2 mb-4">
-        <FontAwesome name="search" size={18} color="#aaa" />
+      <View className="mb-4">
+        {/* <FontAwesome name="search" size={18} color="#aaa" />
         <TextInput
           placeholder="Search any car with plate number"
           placeholderTextColor="#aaa"
           className="ml-2 text-white flex-1"
         />
-        <Feather name="filter" size={20} color="#aaa" />
+        <Feather name="filter" size={20} color="#aaa" /> */}
+        <Search/>
       </View>
 
       {/* Filter Tabs */}
@@ -44,7 +49,7 @@ const RegisteredCars = () => {
 
       {/* Car Cards */}
       <ScrollView showsVerticalScrollIndicator={false}>
-        {Array(5)
+        {Array(4)
           .fill(null)
           .map((_, index) => (
             <View key={index} className="flex-row bg-white rounded-xl p-3 mb-4">
