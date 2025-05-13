@@ -1,5 +1,5 @@
-import Chat from "../screens/Chat";
-import Profile from "../screens/Profile";
+import Chat from "../Screens/Chat";
+import Profile from "../Screens/Profile";
 
 import HomeStackScreen from "./HomeStackNavigation";
 import HistoryStackScreen from "./HistoryStackNavigation";
