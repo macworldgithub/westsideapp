@@ -37,7 +37,7 @@ export default function EditProfile() {
       >
         <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}>
           {/* Header */}
-          <TouchableOpacity className="flex-row items-center py-4">
+          <TouchableOpacity className="flex-row items-center py-12">
             <FontAwesome name="angle-left" size={24} color="white" />
             <Text className="text-white text-lg ml-2 font-semibold">Edit Profile</Text>
           </TouchableOpacity>
@@ -65,51 +65,51 @@ export default function EditProfile() {
           </View>
 
           {/* Form Inputs */}
-          <View className="space-y-6">
+          <View className="space-y-8"> {/* Increased spacing */}
             {/* Full Name */}
             <View>
-              <Text className="text-white mb-2">Full name</Text>
+              <Text className="text-white mb-2 text-base text-start">Full name</Text>
               <TextInput
                 placeholder="Paul Walker"
                 placeholderTextColor="#ccc"
-                className="bg-black text-white px-4 py-3 rounded-xl text-base"
+                className="bg-black text-white px-5 py-4 rounded-xl text-lg" // Increased size
               />
             </View>
 
             {/* Email */}
             <View>
-              <Text className="text-white mb-2">Email</Text>
+              <Text className="text-white mb-2 text-base">Email</Text>
               <TextInput
                 placeholder="Paulwalker@gmail.com"
                 placeholderTextColor="#ccc"
                 editable={false}
-                className="bg-black text-white px-4 py-3 rounded-xl text-base opacity-50"
+                className="bg-black text-white px-5 py-4 rounded-xl text-lg opacity-50"
               />
             </View>
 
             {/* Phone Number */}
             <View>
-              <Text className="text-white mb-2">Phone number</Text>
-              <View className="flex-row items-center bg-black rounded-xl px-4">
+              <Text className="text-white mb-2 text-base">Phone number</Text>
+              <View className="flex-row items-center bg-black rounded-xl px-5 py-4">
                 <Image
                   source={{
-                    uri: "https://flagcdn.com/w40/id.png", 
+                    uri: "https://flagcdn.com/w40/id.png",
                   }}
-                  className="w-6 h-4 mr-3"
+                  className="w-4 h-4 mr-3"
                 />
                 <TextInput
                   placeholder="123456789"
                   placeholderTextColor="#ccc"
                   keyboardType="phone-pad"
-                  className="flex-1 text-white py-3 text-base"
+                  className="flex-1 text-white text-lg"
                 />
               </View>
             </View>
           </View>
         </ScrollView>
 
-        {/* Save Button at Bottom */}
-        <View className="px-5 pb-6 pt-4">
+        {/* Save Button Slightly Above Bottom */}
+        <View className="px-5 pt-4 pb-48">
           <TouchableOpacity className="bg-black py-4 rounded-xl items-center">
             <Text className="text-white text-base font-semibold">Save Changes</Text>
           </TouchableOpacity>
