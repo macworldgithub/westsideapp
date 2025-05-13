@@ -28,12 +28,13 @@ const NewCarRegistration = () => {
     const result = await launchCamera({ mediaType: 'photo' });
     if (!result.didCancel && result.assets?.length > 0) {
       handleChange('imageUri', result.assets[0].uri);
+      
     }
   };
 
   const handleSubmit = () => {
     console.log('Form Data:', form);
-    // Add submit logic here
+    
   };
 
   return (

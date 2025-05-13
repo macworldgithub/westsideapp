@@ -10,7 +10,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 import Button from "../Components/Button";
-import Search from '../Components/Search'; // or correct relative path
+import Search from "../Components/Search";
 
 const RegisteredCars = () => {
   return (

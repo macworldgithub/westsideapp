@@ -10,6 +10,7 @@ import CarOrderDetails from "../Screens/CarOrderDetails";
 import ViewServices from "../Screens/ViewServices";
 import ReportScreen from "../Screens/ReportScreen";
 import EditProfile from "../Screens/EditProfile";
+import AccountSecurityScreen from "../Screens/AccountSecurity";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +19,7 @@ export default function AuthTabs() {
     <Tab.Navigator screenOptions={{ headerShown: false }}  tabBar={props => <CustomTabBar {...props} />}>
       <Tab.Screen name="Home" component={HomeStackScreen} />
       <Tab.Screen name="View" component={EditProfile}/>
-      <Tab.Screen name="Report" component={ReportScreen} />
+      <Tab.Screen name="Report" component={AccountSecurityScreen} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );

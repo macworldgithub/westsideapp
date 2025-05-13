@@ -9,6 +9,7 @@ import Login from "./src/Screens/Login";
 import Splash from "./src/Screens/Splash";
 
 import AuthTabs from "./src/navigation/AuthTabNavigation";
+import EditProfile from "./src/Screens/EditProfile";
 
 const Stack = createStackNavigator();
 const RootStack = createStackNavigator();
@@ -65,6 +66,7 @@ export default function App() {
           ) : (
             // logged in → the 4-tab navigator
             <RootStack.Screen name="AppTabs" component={AuthTabs} />
+            // <RootStack.Screen name ="profile" component={EditProfile}/>
           )}
         </Stack.Navigator>
       </NavigationContainer>
