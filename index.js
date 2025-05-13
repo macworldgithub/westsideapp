@@ -1,3 +1,4 @@
 import { registerRootComponent } from "expo";
 import App from "./App";
-registerRootComponent(App);
+import LanguageScreen from "./src/Screens/LanguageSetting";
+registerRootComponent(LanguageScreen);

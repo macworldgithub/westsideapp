@@ -28,9 +28,11 @@ const LanguageScreen = () => {
 
   return (
     <View className="flex-1 bg-[#111111] px-4 pt-16">
+    <View className="flex-row">
       <Image source={require("../../assets/back.png")} className="w-6 h-6 mr-4" />
       <Text className="text-white text-lg font-semibold mb-6">Language</Text>
-
+</View>
+<View>
       <FlatList
         data={languages}
         renderItem={renderItem}
@@ -38,11 +40,12 @@ const LanguageScreen = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 40 }}
       />
-
-      <Pressable className="bg-black mt-auto py-4 rounded-xl items-center justify-center mb-6">
+</View>
+      <Pressable className="bg-black mt-auto py-4 rounded-xl items-center justify-center mb-10">
         <Text className="text-white font-semibold text-base">Save Change</Text>
       </Pressable>
     </View>
+    
   );
 };
 

@@ -10,8 +10,7 @@ import Splash from "./src/Screens/Splash";
 
 import AuthTabs from "./src/navigation/AuthTabNavigation";
 import EditProfile from "./src/Screens/EditProfile";
-// import GeneralSettingsScreen from "../src/Screen/GeneralSetting";
-// import LanguageScreen from "../src/Screens/LanguageSetting";
+
 const Stack = createStackNavigator();
 const RootStack = createStackNavigator();
 
@@ -68,6 +67,7 @@ export default function App() {
             // logged in → the 4-tab navigator
             <RootStack.Screen name="AppTabs" component={AuthTabs} />
             // <RootStack.Screen name ="profile" component={EditProfile}/>
+            
           )}
         </Stack.Navigator>
       </NavigationContainer>
