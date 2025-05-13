@@ -1,4 +1,5 @@
-import { registerRootComponent } from 'expo';
+import { registerRootComponent } from "expo";
+import App from "./App";
+import GeneralSettingsScreen from "./src/screens/GeneralSetting";
 
-import App from './App';
-registerRootComponent(App);
+registerRootComponent(GeneralSettingsScreen);

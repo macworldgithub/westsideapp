@@ -1,15 +1,16 @@
-import Chat from "../Screens/Chat";
-import Profile from "../Screens/Profile";
+import Chat from "../screens/Chat";
+import Profile from "../screens/Profile";
 
 import HomeStackScreen from "./HomeStackNavigation";
 import HistoryStackScreen from "./HistoryStackNavigation";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CustomTabBar from "../Components/CustomTabBar";
-import CarOrderDetails from "../Screens/CarOrderDetails";
-import ViewServices from "../Screens/ViewServices";
-import ReportScreen from "../Screens/ReportScreen";
-import EditProfile from "../Screens/EditProfile";
+import CarOrderDetails from "../screens/CarOrderDetails";
+import ViewServices from "../screens/ViewServices";
+import ReportScreen from "../screens/ReportScreen";
+import EditProfile from "../screens/EditProfile";
+import GeneralSettingsScreen from "./src/screens/GeneralSetting";
 
 const Tab = createBottomTabNavigator();
 

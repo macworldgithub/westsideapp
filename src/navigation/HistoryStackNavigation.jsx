@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import HistoryDetail from "../Screens/HistoryDetail";
+import HistoryDetail from "../screens/HistoryDetail";
 const HistoryStack = createStackNavigator();
 
 // — History stack —

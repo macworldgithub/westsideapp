@@ -1,4 +1,4 @@
-import RegisteredCars from "../Screens/RegisteredCars";
+import RegisteredCars from "../screens/RegisteredCars";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const HomeStack = createStackNavigator();
