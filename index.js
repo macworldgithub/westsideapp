@@ -1,5 +1,5 @@
 import { registerRootComponent } from 'expo';
 
 import App from './App';
-import NewCarRegistration from './src/screens/NewCarRegistration';
-registerRootComponent(NewCarRegistration);
+import NewWorkOrderScreen from './src/screens/NewWorkOrder';
+registerRootComponent(NewWorkOrderScreen);

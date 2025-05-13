@@ -14,7 +14,7 @@ const RegisteredCars = () => {
   return (
     <View className="flex-1 bg-black px-4 pt-8">
       {/* Header Row */}
-      <View className="flex-row justify-between items-center mb-4">
+     <View className="flex-row items-center space-x-2">
         <Text className="text-white text-xl font-semibold">
           Registered Cars
         </Text>
