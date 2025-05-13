@@ -14,8 +14,6 @@ import EditProfile from "./src/Screens/EditProfile";
 const Stack = createStackNavigator();
 const RootStack = createStackNavigator();
 
-
-
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [isReady, setIsReady] = useState(false);
