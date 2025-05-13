@@ -10,20 +10,17 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 import Button from "../Components/Button";
-import Search from "../Components/Search";
 
 const RegisteredCars = () => {
   return (
-    <View className="flex-1 bg-black px-4">
-      {/* Header Row inside SafeArea */}
-      <SafeAreaView>
-        <View className="flex-row justify-between items-center mb-4 pt-4">
-          <Text className="text-white text-xl font-semibold">
-            Registered Cars
-          </Text>
-          <Button />
-        </View>
-      </SafeAreaView>
+    <View className="flex-1 bg-black px-4 pt-8">
+      {/* Header Row */}
+      <View className="flex-row justify-between items-center mb-4">
+        <Text className="text-white text-xl font-semibold">
+          Registered Cars
+        </Text>
+        <Button />
+      </View>
 
       {/* Search and Filter */}
       <View className="mb-4">
