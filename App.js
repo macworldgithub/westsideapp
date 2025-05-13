@@ -10,7 +10,8 @@ import Splash from "./src/Screens/Splash";
 
 import AuthTabs from "./src/navigation/AuthTabNavigation";
 import EditProfile from "./src/Screens/EditProfile";
-
+// import GeneralSettingsScreen from "../src/Screen/GeneralSetting";
+// import LanguageScreen from "../src/Screens/LanguageSetting";
 const Stack = createStackNavigator();
 const RootStack = createStackNavigator();
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable, FlatList } from 'react-native';
-import { ArrowRight } from 'lucide-react-native'; // Or use any right-arrow icon
-// import { useNavigation } from '@react-navigation/native';
+// import { ArrowRight } from 'lucide-react-native'; 
+
 
 const settingsData = [
   { title: 'Language Setting', route: 'Language' },
@@ -20,7 +20,7 @@ const GeneralSettingsScreen = () => {
       className="bg-black rounded-xl px-4 py-5 flex-row items-center justify-between mb-3"
     >
       <Text className="text-white text-base">{item.title}</Text>
-      <ArrowRight size={20} color="#fff" />
+      {/* <ArrowRight size={20} color="#fff" /> */}
     </Pressable>
   );
   return (
