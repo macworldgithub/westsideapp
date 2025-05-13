@@ -6,11 +6,10 @@ import HistoryStackScreen from "./HistoryStackNavigation";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CustomTabBar from "../Components/CustomTabBar";
-import CarOrderDetails from "../screens/CarOrderDetails";
-import ViewServices from "../screens/ViewServices";
-import ReportScreen from "../screens/ReportScreen";
-import EditProfile from "../screens/EditProfile";
-import GeneralSettingsScreen from "./src/screens/GeneralSetting";
+import CarOrderDetails from "../Screens/CarOrderDetails";
+import ViewServices from "../Screens/ViewServices";
+import ReportScreen from "../Screens/ReportScreen";
+import EditProfile from "../Screens/EditProfile";
 
 const Tab = createBottomTabNavigator();
 
