@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { useNavigation } from '@react-navigation/native'; // ✅ Import navigation
 
 const EditCarDetail = () => {
+  const navigation = useNavigation(); // ✅ Initialize navigation
+
   const [form, setForm] = useState({
     driverName: 'Paul',
     plate: '12345',
@@ -11,7 +14,7 @@ const EditCarDetail = () => {
     model: 'M5',
     year: '2021',
     note: 'This is a note about the car.',
-    imageUri: Image.resolveAssetSource(require('../../assets/Car.png')).uri, // update path if needed
+    imageUri: Image.resolveAssetSource(require('../../assets/Car.png')).uri,
   });
 
   const handleChange = (key, value) => {
@@ -34,7 +37,9 @@ const EditCarDetail = () => {
     <ScrollView className="flex-1 bg-black px-4 pt-12" contentContainerStyle={{ paddingBottom: 40 }}>
       {/* Header */}
       <View className="flex-row items-center mb-6">
-        <Icon name="arrow-left" size={20} color="white" />
+        <TouchableOpacity onPress={() => navigation.navigate('RegisteredCars')}>
+          <Icon name="arrow-left" size={20} color="white" />
+        </TouchableOpacity>
         <Text className="text-white text-lg font-semibold ml-3">Edit Car Detail</Text>
       </View>
 

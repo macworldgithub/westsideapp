@@ -7,32 +7,22 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 import Button from "../Components/Button";
 import Search from "../Components/Search";
 
-const RegisteredCars = () => {
+const RegisteredCars = ({ navigation }) => {
   return (
-    <View className="flex-1 bg-black px-4 pt-8">
-      {/* Header Row */}
-      <View className="flex-row justify-between items-center mb-4">
-        <Text className="text-white text-xl font-semibold">
-          Registered Cars
-        </Text>
+    <View className="flex-1 bg-black px-4 pt-12">
+      {/* Header */}
+      <View className="flex-row justify-between items-center mb-8">
+        <Text className="text-white text-xl font-semibold">Registered Cars</Text>
         <Button />
       </View>
 
-      {/* Search and Filter */}
+      {/* Search */}
       <View className="mb-4">
-        {/* <FontAwesome name="search" size={18} color="#aaa" />
-        <TextInput
-          placeholder="Search any car with plate number"
-          placeholderTextColor="#aaa"
-          className="ml-2 text-white flex-1"
-        />
-        <Feather name="filter" size={20} color="#aaa" /> */}
-        <Search/>
+        <Search />
       </View>
 
       {/* Filter Tabs */}
@@ -58,21 +48,23 @@ const RegisteredCars = () => {
               />
               <View className="flex-1 ml-3 justify-between">
                 <Text className="text-black text-base font-bold">BMW</Text>
-                <Text className="text-gray-400 text-xs">
-                  Due on 11 sep, 2023
-                </Text>
+                <Text className="text-gray-400 text-xs">Due on 11 sep, 2023</Text>
                 <Text className="text-gray-400 text-xs">Paint Work</Text>
                 <Text className="text-gray-400 text-xs">👤 Chris</Text>
                 <Text className="text-gray-400 text-xs">📞 +1202-555-0877</Text>
               </View>
               <View className="justify-between ml-2">
-                <TouchableOpacity className="bg-gray-300 px-2 py-1 rounded-full">
+                <TouchableOpacity
+                  className="bg-gray-300 px-2 py-1 rounded-full"
+                  onPress={() => navigation.navigate("EditCarDetail")}
+                >
                   <Text className="text-black text-xs text-center">Edit</Text>
                 </TouchableOpacity>
-                <TouchableOpacity className="bg-gray-300 px-4 py-1 rounded-full mb-9">
-                  <Text className="text-black text-xs text-center">
-                    Work Order
-                  </Text>
+                <TouchableOpacity
+                  className="bg-gray-300 px-4 py-1 rounded-full mb-9"
+                  onPress={() => navigation.navigate("WorkOrder")}
+                >
+                  <Text className="text-black text-xs text-center">Work Order</Text>
                 </TouchableOpacity>
               </View>
             </View>

@@ -10,6 +10,15 @@ import Splash from "./src/Screens/Splash";
 
 import AuthTabs from "./src/navigation/AuthTabNavigation";
 import EditProfile from "./src/Screens/EditProfile";
+import RegisteredCars from "./src/Screens/RegisteredCars";
+import EditCarDetail from "./src/Screens/CarDetailEdit";
+import WorkOrder from "./src/Screens/WorkOrder";
+import NewWorkOrder from "./src/Screens/NewWorkOrder"
+import ViewServices from "./src/Screens/ViewServices";
+import CarOrderDetails from "./src/Screens/CarOrderDetails";
+import ReportScreen from "./src/Screens/ReportScreen";
+// import ViewServices from "./src/Screens/ViewServices";
+
 
 const Stack = createStackNavigator();
 const RootStack = createStackNavigator();
@@ -23,7 +32,6 @@ export default function App() {
   const splashOpacity = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    // wait 4s, then animate opacity to 0 over 600ms
     const timer = setTimeout(() => {
       Animated.timing(splashOpacity, {
         toValue: 0,
@@ -65,9 +73,17 @@ export default function App() {
             </Stack.Screen>
           ) : (
             // logged in → the 4-tab navigator
-            <RootStack.Screen name="AppTabs" component={AuthTabs} />
-            // <RootStack.Screen name ="profile" component={EditProfile}/>
-            
+            <>
+              <RootStack.Screen name="AppTabs" component={AuthTabs} />
+              <Stack.Screen name="RegisteredCars" component={RegisteredCars} />
+              <Stack.Screen name="EditCarDetail" component={EditCarDetail} />
+              <Stack.Screen name="WorkOrder" component={WorkOrder} />
+              <Stack.Screen name ="ViewServices" component={ViewServices}/>
+              <Stack.Screen name="NewWorkOrder" component={NewWorkOrder}/>
+              <Stack.Screen name="ReportScreen" component={ReportScreen}/>
+              <Stack.Screen name="CarOrderDetails" component={CarOrderDetails}/>
+
+            </>
           )}
         </Stack.Navigator>
       </NavigationContainer>
