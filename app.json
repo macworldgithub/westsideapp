@@ -3,10 +3,13 @@
     "name": "westsideapp",
     "slug": "westsideapp",
     "version": "1.0.0",
-      "splash": {
+    "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",      
-      "backgroundColor": "#ffffff"  
-    }
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

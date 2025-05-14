@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Make sure this import is at the top
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'; // ✅ Import navigation hook
 
 const orders = [
     { id: '0124568', owner: 'Paul', mechanic: 'Walker', status: 'Inprogress' },
@@ -9,8 +10,6 @@ const orders = [
     { id: '0124571', owner: 'Mike', mechanic: 'Taylor', status: 'Inprogress' },
     { id: '0124571', owner: 'Mike', mechanic: 'Taylor', status: 'Inprogress' },
     { id: '0124571', owner: 'Mike', mechanic: 'Taylor', status: 'Inprogress' },
-
-
 ];
 
 const getStatusColor = (status) => {
@@ -23,15 +22,25 @@ const getStatusColor = (status) => {
 };
 
 export default function WorkOrdersScreen() {
+    const navigation = useNavigation(); 
+
     return (
         <View className="flex-1 bg-black px-4 pt-16">
             {/* Header */}
             <View className="flex-row items-center justify-between mb-4">
                 <View className="flex-row items-center space-x-2">
-                    <Image source={require('../../assets/back.png')} className="w-6 h-6" />
+                  
+                    <TouchableOpacity onPress={() => navigation.navigate('RegisteredCars')}>
+                        <Image source={require('../../assets/back.png')} className="w-6 h-6" />
+                    </TouchableOpacity>
                     <Text className="text-white text-lg font-semibold">Work Orders</Text>
                 </View>
-                <TouchableOpacity className="bg-gray-200 px-4 py-1 rounded-md">
+
+              
+                <TouchableOpacity
+                    className="bg-gray-200 px-4 py-1 rounded-md"
+                    onPress={() => navigation.navigate('NewWorkOrder')}
+                >
                     <Text className="text-black text-sm">+ New Order</Text>
                 </TouchableOpacity>
             </View>
@@ -45,10 +54,16 @@ export default function WorkOrdersScreen() {
                     className="ml-2 flex-1 text-black"
                 />
             </View>
+
             {/* Order Cards */}
             <ScrollView showsVerticalScrollIndicator={false}>
                 {orders.map((order, index) => (
-                    <View key={index} className="flex-row items-center bg-white p-3 rounded-xl mb-4">
+                   
+                    <TouchableOpacity
+                        key={index}
+                        onPress={() => navigation.navigate('ViewServices')}
+                        className="flex-row items-center bg-white p-3 rounded-xl mb-4"
+                    >
                         {/* Image */}
                         <View className="w-12 h-12 mr-3 bg-gray-200 rounded-xl items-center justify-center overflow-hidden">
                             <Image
@@ -74,15 +89,23 @@ export default function WorkOrdersScreen() {
                                 <Text className="text-xs text-black">{order.status}</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity className="bg-black rounded-full mb-1 items-center justify-center" style={{ width: 80, height: 20 }}>
+                            <TouchableOpacity
+                                className="bg-black rounded-full mb-1 items-center justify-center"
+                                style={{ width: 80, height: 20 }}
+                                onPress={() => navigation.navigate('ReportScreen')} // Navigate to ReportScreen
+                            >
                                 <Text className="text-white text-xs">Report</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity className="bg-black rounded-full items-center justify-center" style={{ width: 80, height: 20 }}>
+                            <TouchableOpacity
+                                className="bg-black rounded-full items-center justify-center"
+                                style={{ width: 80, height: 20 }}
+                                onPress={() => navigation.navigate('CarOrderDetails')} // Navigate to CarOrderDetails
+                            >
                                 <Text className="text-white text-xs">View</Text>
                             </TouchableOpacity>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 ))}
             </ScrollView>
         </View>
