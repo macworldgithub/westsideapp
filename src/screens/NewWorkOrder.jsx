@@ -152,8 +152,7 @@
 
 // export default NewWorkOrderScreen;
 
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -166,25 +165,25 @@ import {
   Modal,
   PermissionsAndroid,
   Alert,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Feather';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/Feather";
+import { launchCamera, launchImageLibrary } from "react-native-image-picker";
 
 const NewWorkOrderScreen = () => {
   const navigation = useNavigation();
 
   const [form, setForm] = useState({
-    ownerName: '',
-    headMechanicName: '',
-    orderCreatorName: '',
-    email: '',
-    phone: '',
-    startDate: '',
-    finishDate: '',
-    address: '',
-    status: 'In Progress',
-    imageUri: Image.resolveAssetSource(require('../../assets/Car.png')).uri,
+    ownerName: "",
+    headMechanicName: "",
+    orderCreatorName: "",
+    email: "",
+    phone: "",
+    startDate: "",
+    finishDate: "",
+    address: "",
+    status: "In Progress",
+    imageUri: Image.resolveAssetSource(require("../../assets/Car.png")).uri,
   });
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -194,7 +193,7 @@ const NewWorkOrderScreen = () => {
   };
 
   const handleSubmit = () => {
-    console.log('Form Data:', form);
+    console.log("Form Data:", form);
     // Add API logic or navigation here
   };
 
@@ -206,8 +205,10 @@ const NewWorkOrderScreen = () => {
         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
       ]);
       return (
-        granted['android.permission.CAMERA'] === PermissionsAndroid.RESULTS.GRANTED &&
-        granted['android.permission.READ_MEDIA_IMAGES'] === PermissionsAndroid.RESULTS.GRANTED
+        granted["android.permission.CAMERA"] ===
+          PermissionsAndroid.RESULTS.GRANTED &&
+        granted["android.permission.READ_MEDIA_IMAGES"] ===
+          PermissionsAndroid.RESULTS.GRANTED
       );
     } catch (err) {
       console.warn(err);
@@ -215,58 +216,77 @@ const NewWorkOrderScreen = () => {
     }
   };
 
- const takePhoto = async () => {
-  const hasPermission = Platform.OS === 'android' ? await requestPermissions() : true;
-  if (!hasPermission) return Alert.alert('Permission denied');
+  const takePhoto = async () => {
+    const hasPermission =
+      Platform.OS === "android" ? await requestPermissions() : true;
+    if (!hasPermission) return Alert.alert("Permission denied");
 
-  const result = await launchCamera({ mediaType: 'photo' });
-  console.log('Camera Result:', result); // 👈 ADD THIS
-  if (!result.didCancel && result.assets?.length > 0) {
-    setForm(prev => ({ ...prev, imageUri: result.assets[0].uri }));
-  }
-  setModalVisible(false);
-};
+    const result = await launchCamera({ mediaType: "photo" });
+    console.log("Camera Result:", result); // 👈 ADD THIS
+    if (!result.didCancel && result.assets?.length > 0) {
+      setForm((prev) => ({ ...prev, imageUri: result.assets[0].uri }));
+    }
+    setModalVisible(false);
+  };
 
-const pickFromGallery = async () => {
-  const hasPermission = Platform.OS === 'android' ? await requestPermissions() : true;
-  if (!hasPermission) return Alert.alert('Permission denied');
+  const pickFromGallery = async () => {
+    const hasPermission =
+      Platform.OS === "android" ? await requestPermissions() : true;
+    if (!hasPermission) return Alert.alert("Permission denied");
 
-  const result = await launchImageLibrary({ mediaType: 'photo' });
-  console.log('Gallery Result:', result); // 👈 ADD THIS
-  if (!result.didCancel && result.assets?.length > 0) {
-    setForm(prev => ({ ...prev, imageUri: result.assets[0].uri }));
-  }
-  setModalVisible(false);
-};
-
+    const result = await launchImageLibrary({ mediaType: "photo" });
+    console.log("Gallery Result:", result); // 👈 ADD THIS
+    if (!result.didCancel && result.assets?.length > 0) {
+      setForm((prev) => ({ ...prev, imageUri: result.assets[0].uri }));
+    }
+    setModalVisible(false);
+  };
 
   const fields = [
-    { key: 'ownerName', label: 'Owner Name', placeholder: 'Enter owner name' },
-    { key: 'headMechanicName', label: 'Head Mechanic Name', placeholder: 'Enter head mechanic name' },
-    { key: 'orderCreatorName', label: 'Order Creator Name', placeholder: 'Enter order creator name' },
-    { key: 'email', label: 'Email', placeholder: 'Enter email' },
-    { key: 'phone', label: 'Phone No.', placeholder: 'Enter phone number' },
-    { key: 'startDate', label: 'Start Date', placeholder: 'DD-MM-YYYY' },
-    { key: 'finishDate', label: 'Work Finish Date', placeholder: 'DD-MM-YYYY' },
-    { key: 'address', label: 'Address', placeholder: 'Enter address' },
-    { key: 'status', label: 'Status', placeholder: 'Enter status' },
+    { key: "ownerName", label: "Owner Name", placeholder: "Enter owner name" },
+    {
+      key: "headMechanicName",
+      label: "Head Mechanic Name",
+      placeholder: "Enter head mechanic name",
+    },
+    {
+      key: "orderCreatorName",
+      label: "Order Creator Name",
+      placeholder: "Enter order creator name",
+    },
+    { key: "email", label: "Email", placeholder: "Enter email" },
+    { key: "phone", label: "Phone No.", placeholder: "Enter phone number" },
+    { key: "startDate", label: "Start Date", placeholder: "DD-MM-YYYY" },
+    { key: "finishDate", label: "Work Finish Date", placeholder: "DD-MM-YYYY" },
+    { key: "address", label: "Address", placeholder: "Enter address" },
+    { key: "status", label: "Status", placeholder: "Enter status" },
   ];
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1 bg-black"
     >
       <ScrollView
-        contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 60, paddingBottom: 40, flexGrow: 1 }}
+        contentContainerStyle={{
+          paddingHorizontal: 16,
+          paddingTop: 60,
+          paddingBottom: 40,
+          flexGrow: 1,
+        }}
         keyboardShouldPersistTaps="handled"
       >
         {/* Header */}
         <View className="flex-row items-center mb-6">
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image source={require('../../assets/back.png')} className="w-6 h-6 mr-4" />
+            <Image
+              source={require("../../assets/back.png")}
+              className="w-6 h-6 mr-4"
+            />
           </TouchableOpacity>
-          <Text className="text-white text-xl font-semibold">New Work Order</Text>
+          <Text className="text-white text-xl font-semibold">
+            New Work Order
+          </Text>
         </View>
 
         {/* Input Fields */}
@@ -308,7 +328,9 @@ const pickFromGallery = async () => {
         >
           <View className="flex-1 justify-center items-center bg-black/60">
             <View className="bg-neutral-900 rounded-2xl p-6 w-72">
-              <Text className="text-white text-lg font-semibold mb-4">Change Photo</Text>
+              <Text className="text-white text-lg font-semibold mb-4">
+                Change Photo
+              </Text>
               <TouchableOpacity className="mb-3" onPress={takePhoto}>
                 <Text className="text-white">📷 Take a Picture</Text>
               </TouchableOpacity>
@@ -335,4 +357,3 @@ const pickFromGallery = async () => {
 };
 
 export default NewWorkOrderScreen;
-

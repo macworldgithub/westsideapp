@@ -39,7 +39,6 @@ const EditCarDetail = () => {
   };
 
   const takePhoto = async () => {
-    
     const result = await launchCamera({ mediaType: 'photo' });
     if (!result.didCancel && result.assets?.length > 0) {
       handleChange('imageUri', result.assets[0].uri);
@@ -80,13 +79,12 @@ const EditCarDetail = () => {
       </View>
 
       {/* Modal */}
-      <Modal 
+      <Modal
         transparent
         visible={modalVisible}
         animationType="fade"
         onRequestClose={() => setModalVisible(false)}
       >
-        
         <View className="flex-1 justify-center items-center bg-black/60">
           <View className="bg-neutral-900 rounded-2xl p-6 w-72">
             <Text className="text-white text-lg font-semibold mb-4">Change Photo</Text>
