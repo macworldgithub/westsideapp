@@ -7,12 +7,15 @@ import {
   ScrollView,
 } from "react-native";
 import { FontAwesome, Feather, Ionicons } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
 
 export default function Profile() {
   const user = {
     name: "Paul Walker",
     email: "Paulwalker@gmail.com",
   };
+
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView className="flex-1 bg-[#191919]">
@@ -36,25 +39,38 @@ export default function Profile() {
 
         {/* Menu Options */}
         <View className="w-[90%]">
-          <MenuItem icon={<FontAwesome name="user" size={24} color="white" />} title="Edit Profile" />
+          <MenuItem 
+            icon={<FontAwesome name="user" size={24} color="white" />} 
+            title="Edit Profile" 
+            onPress={() => navigation.navigate('EditProfile')} 
+          />
           <View className="h-6" />
-          <MenuItem icon={<Feather name="shield" size={24} color="white" />} title="Account Security" />
+          <MenuItem 
+            icon={<Feather name="shield" size={24} color="white" />} 
+            title="Account Security" 
+            onPress={() => navigation.navigate('AccountSecurity')} 
+          />
           <View className="h-6" />
-          <MenuItem icon={<Ionicons name="settings-outline" size={24} color="white" />} title="General Settings" />
+          <MenuItem 
+            icon={<Ionicons name="settings-outline" size={24} color="white" />} 
+            title="General Settings" 
+            onPress={() => navigation.navigate('GeneralSetting')} 
+          />
           <View className="h-6" />
-          <MenuItem icon={<Ionicons name="help-circle-outline" size={24} color="white" />} title="Help Centre" />
+          <MenuItem 
+            icon={<Ionicons name="help-circle-outline" size={24} color="white" />} 
+            title="Help Centre" 
+            onPress={() => navigation.navigate('LanguageSetting')} 
+          />
         </View>
-
-        {/* App Version
-        <Text className="text-gray-500 mt-12 text-sm">App version 1.0.0.1</Text> */}
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-const MenuItem = ({ icon, title }) => (
-  <TouchableOpacity className="bg-[#000000] flex-row items-center justify-between px-5 py-5 rounded-2xl">
-    <View className="flex-row items-center space-x-5"> {/* spacing added here */}
+const MenuItem = ({ icon, title, onPress }) => (
+  <TouchableOpacity className="bg-[#000000] flex-row items-center justify-between px-5 py-5 rounded-2xl" onPress={onPress}>
+    <View className="flex-row items-center space-x-5">
       {icon}
       <Text className="text-white text-base font-medium">{title}</Text>
     </View>

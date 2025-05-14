@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, Platform } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 const NewCarRegistration = () => {
@@ -28,19 +28,18 @@ const NewCarRegistration = () => {
     const result = await launchCamera({ mediaType: 'photo' });
     if (!result.didCancel && result.assets?.length > 0) {
       handleChange('imageUri', result.assets[0].uri);
-      
     }
   };
 
   const handleSubmit = () => {
     console.log('Form Data:', form);
-    
   };
 
   return (
     <ScrollView className="flex-1 bg-black px-4 pt-10 pb-6" contentContainerStyle={{ paddingBottom: 40 }}>
       <Text className="text-white text-xl font-semibold mb-6">New Car Registration</Text>
 
+      {/* Input Fields */}
       {[
         { label: 'Driver Name', key: 'driverName' },
         { label: 'Car Plate', key: 'carPlate' },
@@ -60,12 +59,12 @@ const NewCarRegistration = () => {
         </View>
       ))}
 
+      {/* Note Field */}
       <View className="mb-4">
         <Text className="text-white mb-1">Note:</Text>
-        <View className="flex-row items-start bg-white border rounded-xl px-3 pt-2 pb-2">
-
+        <View className="bg-white rounded-xl px-4 pt-2 pb-2">
           <TextInput
-            className="flex-1 text-white text-top h-24"
+            className="text-black h-24"
             multiline
             textAlignVertical="top"
             numberOfLines={4}
@@ -76,20 +75,24 @@ const NewCarRegistration = () => {
           />
         </View>
       </View>
-      <View className="mb-4">
+
+      {/* Image Upload Section (Updated UI) */}
+      <View className="mb-6">
         <Text className="text-white mb-2">Image Upload</Text>
-        <View className="flex-row justify-between">
+
+        <View className="flex-row space-x-4">
           <TouchableOpacity
-            className="bg-gray-800 flex-1 mr-2 py-4 rounded-xl items-center"
             onPress={handleImagePick}
+            className="flex-1 bg-gray-200 rounded-xl py-16 items-center"
           >
-            <Text className="text-white">Upload Image</Text>
+            <Text className="text-black font-semibold">Upload Image</Text>
           </TouchableOpacity>
+
           <TouchableOpacity
-            className="bg-gray-800 flex-1 ml-2 py-4 rounded-xl items-center"
             onPress={handleCaptureImage}
+            className="flex-1 bg-gray-200 rounded-xl py-16 items-center ml-8"
           >
-            <Text className="text-white">Capture Image</Text>
+            <Text className="text-black font-semibold">Capture Image</Text>
           </TouchableOpacity>
         </View>
 
@@ -102,6 +105,7 @@ const NewCarRegistration = () => {
         )}
       </View>
 
+      {/* Submit Button */}
       <TouchableOpacity
         className="bg-black py-3 rounded-xl items-center mt-6 border border-white"
         onPress={handleSubmit}

@@ -17,6 +17,13 @@ import NewWorkOrder from "./src/Screens/NewWorkOrder"
 import ViewServices from "./src/Screens/ViewServices";
 import CarOrderDetails from "./src/Screens/CarOrderDetails";
 import ReportScreen from "./src/Screens/ReportScreen";
+// import ViewServices from "./src/Screens/ViewServices";
+import NewCarRegistrtaiom from "./src/Screens/NewCarRegistration";
+import Profile from "./src/Screens/Profile";
+// import EditProfile from "./src/Screens/EditProfile";
+import GeneralSettingsScreen from "./src/Screens/GeneralSetting";
+import LanguageSetting from "./src/Screens/LanguageSetting";
+import AccountSecurityScreen from "./src/Screens/AccountSecurity";
 
 const Stack = createStackNavigator();
 const RootStack = createStackNavigator();
@@ -80,6 +87,12 @@ export default function App() {
               <Stack.Screen name="NewWorkOrder" component={NewWorkOrder}/>
               <Stack.Screen name="ReportScreen" component={ReportScreen}/>
               <Stack.Screen name="CarOrderDetails" component={CarOrderDetails}/>
+              <Stack.Screen name="NewCarRegistration" component={NewCarRegistrtaiom}/>
+              <Stack.Screen name="Profile" component={Profile} />
+             <Stack.Screen name="EditProfile" component={EditProfile} />
+             <Stack.Screen name="AccountSecurity" component={AccountSecurityScreen}/>
+             <Stack.Screen name="GeneralSetting" component={GeneralSettingsScreen}/>
+             <Stack.Screen name="LanguageSetting" component={LanguageSetting} />
 
             </>
           )}
