@@ -17,7 +17,7 @@ const RegisteredCars = ({ navigation }) => {
       {/* Header */}
       <View className="flex-row justify-between items-center mb-8">
         <Text className="text-white text-xl font-semibold">Registered Cars</Text>
-        <Button />
+       <Button navigation={navigation} />
       </View>
 
       {/* Search */}
