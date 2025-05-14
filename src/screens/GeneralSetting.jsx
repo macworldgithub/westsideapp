@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Pressable, FlatList, Image } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList,Pressable, Image } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather'; 
-
+import { FontAwesome } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 const settingsData = [
   { title: 'Language Setting', route: 'Language' },
   { title: 'Notification Setting', route: 'Notification' },
@@ -11,7 +12,7 @@ const settingsData = [
 ];
 
 const GeneralSettingsScreen = () => {
-
+  const navigation = useNavigation();
   const renderItem = ({ item }) => (
     <Pressable
       className="bg-black rounded-xl px-4 py-5 flex-row items-center justify-between mb-3"
@@ -22,16 +23,19 @@ const GeneralSettingsScreen = () => {
   );
 
   return (
-    <View className="flex-1 bg-[#111111] pt-16 px-4 ">
-    <View className="flex-row ">
-      {/* Back Button */}
-      <Pressable 
-      className="mb-6 w-6 h-6">
-        <Image source={require('../../assets/back.png')} className="w-6 h-6" />
-      </Pressable>
-
-      <Text className="text-white text-lg font-semibold mb-6 ml-4">General Settings</Text>
-</View>
+    <View className="flex-1 bg-[#111111] pt-6 px-4 ">
+    {/* Header */}
+          <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Profile")}
+              className="flex-row items-center py-12"
+            >
+              <FontAwesome name="angle-left" size={24} color="white" />
+              <Text className="text-white text-lg ml-4 font-semibold">
+                General Setting
+              </Text>
+            </TouchableOpacity>
+          </View>
 <View>
       <FlatList
         data={settingsData}
