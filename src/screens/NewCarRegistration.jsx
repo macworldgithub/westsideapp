@@ -145,3 +145,4 @@ const NewCarRegistration = () => {
 };
 
 export default NewCarRegistration;
+
