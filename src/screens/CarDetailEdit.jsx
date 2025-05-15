@@ -24,7 +24,7 @@ const EditCarDetail = () => {
     imageUri: Image.resolveAssetSource(require('../../assets/Car.png')).uri,
   });
 
-  const [modalVisible, setModalVisible] = useState(false); // ✅ Modal state
+  const [modalVisible, setModalVisible] = useState(false); 
 
   const handleChange = (key, value) => {
     setForm(prev => ({ ...prev, [key]: value }));
@@ -48,7 +48,7 @@ const EditCarDetail = () => {
 
   const handleSubmit = () => {
     console.log('Submitted Data:', form);
-    // Add API or navigation logic here
+    
   };
 
   return (

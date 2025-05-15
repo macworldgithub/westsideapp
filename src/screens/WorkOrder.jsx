@@ -58,7 +58,7 @@ export default function WorkOrdersScreen() {
             {/* Order Cards */}
             <ScrollView showsVerticalScrollIndicator={false}>
                 {orders.map((order, index) => (
-                   
+                
                     <TouchableOpacity
                         key={index}
                         onPress={() => navigation.navigate('ViewServices')}
@@ -100,7 +100,7 @@ export default function WorkOrdersScreen() {
                             <TouchableOpacity
                                 className="bg-black rounded-full items-center justify-center"
                                 style={{ width: 80, height: 20 }}
-                                onPress={() => navigation.navigate('CarOrderDetails')} // Navigate to CarOrderDetails
+                                onPress={() => navigation.navigate('CarOrderDetails')} 
                             >
                                 <Text className="text-white text-xs">View</Text>
                             </TouchableOpacity>

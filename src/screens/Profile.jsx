@@ -22,7 +22,10 @@ export default function Profile() {
       {/* Header Row */}
       <View className="flex-row justify-between items-center px-4 mt-10">
         <Text className="text-white text-xl font-semibold">Profile</Text>
-        <TouchableOpacity className="bg-[#2f2f2f] px-6 py-3 rounded-lg">
+        <TouchableOpacity
+          className="bg-[#2f2f2f] px-6 py-3 rounded-lg"
+          onPress={() => navigation.navigate('Login')} // ✅ Navigate to Login
+        >
           <Text className="text-white text-sm">Logout</Text>
         </TouchableOpacity>
       </View>
