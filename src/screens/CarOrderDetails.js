@@ -2,18 +2,27 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
 const CarOrderDetails = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView className="px-4 pt-4">
-        {/* Header */}
-        <Text className="text-white text-xl font-bold mb-4">Car Order Details</Text>
+
+        {/* Header with Back Arrow */}
+        <View className="flex-row items-center mb-4">
+          <TouchableOpacity onPress={() => navigation.navigate('NewWorkOrder')}>
+            <Image source={require('../../assets/back.png')} className="w-6 h-6" /> 
+          </TouchableOpacity>
+          <Text className="text-white text-xl font-bold ml-4">Car Order Details</Text>
+        </View>
 
         {/* Image */}
         <View className="rounded-xl overflow-hidden mb-4 w-full h-56">
           <Image
-            source={require('../../assets/CarPic.png')} 
+            source={require('../../assets/CarPic.png')}
             className="w-full h-full"
             resizeMode="cover"
           />

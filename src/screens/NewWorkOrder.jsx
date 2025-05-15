@@ -278,7 +278,7 @@ const NewWorkOrderScreen = () => {
       >
         {/* Header */}
         <View className="flex-row items-center mb-6">
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={() => navigation.navigate('WorkOrder')}>
             <Image
               source={require("../../assets/back.png")}
               className="w-6 h-6 mr-4"
