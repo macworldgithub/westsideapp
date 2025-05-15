@@ -30,9 +30,9 @@ export default function WorkOrdersScreen() {
             <View className="flex-row items-center justify-between mb-4">
                 <View className="flex-row items-center space-x-2">
                     {/* ✅ Wrapped Image in TouchableOpacity */}
-                    <TouchableOpacity onPress={() => navigation.navigate('RegisteredCars')}>
+                    {/* <TouchableOpacity onPress={() => navigation.navigate('RegisteredCars')}> */}
                         <Image source={require('../../assets/back.png')} className="w-6 h-6" />
-                    </TouchableOpacity>
+                    {/* </TouchableOpacity> */}
                     <Text className="text-white text-lg font-semibold">Work Orders</Text>
                 </View>
 

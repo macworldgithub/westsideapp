@@ -12,6 +12,7 @@ import ReportScreen from "../Screens/ReportScreen";
 import EditProfile from "../Screens/EditProfile";
 import AccountSecurityScreen from "../Screens/AccountSecurity";
 import GeneralSettingsScreen from "../Screens/GeneralSetting";
+import RegisteredCars from "../Screens/RegisteredCars";
 
 const Tab = createBottomTabNavigator();
 
