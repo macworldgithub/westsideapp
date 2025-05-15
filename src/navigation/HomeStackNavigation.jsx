@@ -4,6 +4,7 @@ import RegisteredCars from "../Screens/RegisteredCars";
 import WorkOrder from "../Screens/WorkOrder"; // make sure this path & filename are correct
 import { createStackNavigator } from "@react-navigation/stack";
 
+
 const HomeStack = createStackNavigator();
 
 export default function HomeStackScreen() {
@@ -12,6 +13,7 @@ export default function HomeStackScreen() {
       <HomeStack.Screen name="RegisteredCars" component={RegisteredCars} />
       <HomeStack.Screen name="EditCarDetail" component={EditCarDetail} />
       <HomeStack.Screen name="WorkOrder" component={WorkOrder} />
+   
     </HomeStack.Navigator>
   );
 }

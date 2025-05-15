@@ -94,6 +94,7 @@ export default function App() {
              <Stack.Screen name="AccountSecurity" component={AccountSecurityScreen}/>
              <Stack.Screen name="GeneralSetting" component={GeneralSettingsScreen}/>
              <Stack.Screen name="LanguageSetting" component={LanguageSetting} />
+             {/* <Stack.Screen name="Login" component={Login}/> */}
 
             </>
           )}
