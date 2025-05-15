@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Login from "./src/Screens/Login";
 import Splash from "./src/Screens/Splash";
 
+
 import AuthTabs from "./src/navigation/AuthTabNavigation";
 import EditProfile from "./src/Screens/EditProfile";
 import RegisteredCars from "./src/Screens/RegisteredCars";
