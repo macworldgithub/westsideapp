@@ -7,9 +7,8 @@ const orders = [
     { id: '0124568', owner: 'Paul', mechanic: 'Walker', status: 'Inprogress' },
     { id: '0124569', owner: 'Sara', mechanic: 'Davis', status: 'Completed' },
     { id: '0124570', owner: 'John', mechanic: 'Lee', status: 'Assessment' },
-    { id: '0124571', owner: 'Mike', mechanic: 'Taylor', status: 'Inprogress' },
-    { id: '0124571', owner: 'Mike', mechanic: 'Taylor', status: 'Inprogress' },
-    { id: '0124571', owner: 'Mike', mechanic: 'Taylor', status: 'Inprogress' },
+    { id: '0124571', owner: 'Mike', mechanic: 'Taylor', status: 'Inprogress' }
+    
 ];
 
 const getStatusColor = (status) => {
