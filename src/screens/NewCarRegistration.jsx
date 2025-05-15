@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { useNavigation } from '@react-navigation/native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const NewCarRegistration = () => {
   const navigation = useNavigation();
@@ -45,17 +46,26 @@ const NewCarRegistration = () => {
   };
 
   return (
-    <ScrollView className="flex-1 bg-black px-4 pt-10 pb-6" contentContainerStyle={{ paddingBottom: 40 }}>
-      <View className='flex-row'>
-      <TouchableOpacity onPress={() => navigation.goBack()} className="mb-4 w-8">
-        <Image
-          source={require('../../assets/back.png')} // <-- Replace with your actual PNG path
-          style={{ width: 24, height: 24 }}
-          resizeMode="contain"
-        />
-      </TouchableOpacity>
-      <Text className="text-white text-xl font-semibold mb-6">New Car Registration</Text>
-</View>
+    <ScrollView
+      className="flex-1 bg-black px-4 pt-10 pb-6"
+      contentContainerStyle={{ paddingBottom: 40 }}
+    >
+      <View className="flex-row">
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          className="mb-4 w-8"
+        >
+          <Image
+            source={require('../../assets/back.png')} // <-- Replace with your actual PNG path
+            style={{ width: 24, height: 24 }}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+        <Text className="text-white text-xl font-semibold mb-6">
+          New Car Registration
+        </Text>
+      </View>
+
       {/* Input Fields */}
       {[
         { label: 'Driver Name', key: 'driverName' },
@@ -99,23 +109,25 @@ const NewCarRegistration = () => {
         <View className="flex-row space-x-4">
           <TouchableOpacity
             onPress={handleImagePick}
-            className="flex-1 bg-gray-200 rounded-xl py-16 items-center"
+            className="flex-1 bg-gray-200 rounded-xl py-14 items-center justify-center"
           >
-            <Text className="text-black font-semibold">Upload Image</Text>
+            <MaterialCommunityIcons name="upload" size={38} color="black" />
+            <Text className="text-black font-semibold mt-2">Upload</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={handleCaptureImage}
-            className="flex-1 bg-gray-200 rounded-xl py-16 items-center ml-8"
+            className="flex-1 bg-gray-200 rounded-xl py-14 items-center justify-center ml-5"
           >
-            <Text className="text-black font-semibold">Capture Image</Text>
+            <MaterialCommunityIcons name="camera" size={38} color="black" />
+            <Text className="text-black font-semibold mt-2">Capture</Text>
           </TouchableOpacity>
         </View>
 
         {form.imageUri && (
           <Image
             source={{ uri: form.imageUri }}
-            className="w-full h-40 mt-4 rounded-xl"
+            className="w-full h-28 mt-4 rounded-xl"
             resizeMode="cover"
           />
         )}
