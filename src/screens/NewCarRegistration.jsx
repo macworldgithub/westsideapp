@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+} from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { useNavigation } from '@react-navigation/native';
 
 const NewCarRegistration = () => {
+  const navigation = useNavigation();
   const [form, setForm] = useState({
     driverName: '',
     carPlate: '',
@@ -37,8 +46,16 @@ const NewCarRegistration = () => {
 
   return (
     <ScrollView className="flex-1 bg-black px-4 pt-10 pb-6" contentContainerStyle={{ paddingBottom: 40 }}>
+      <View className='flex-row'>
+      <TouchableOpacity onPress={() => navigation.goBack()} className="mb-4 w-8">
+        <Image
+          source={require('../../assets/back.png')} // <-- Replace with your actual PNG path
+          style={{ width: 24, height: 24 }}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
       <Text className="text-white text-xl font-semibold mb-6">New Car Registration</Text>
-
+</View>
       {/* Input Fields */}
       {[
         { label: 'Driver Name', key: 'driverName' },
@@ -76,10 +93,9 @@ const NewCarRegistration = () => {
         </View>
       </View>
 
-      {/* Image Upload Section (Updated UI) */}
+      {/* Image Upload Section */}
       <View className="mb-6">
         <Text className="text-white mb-2">Image Upload</Text>
-
         <View className="flex-row space-x-4">
           <TouchableOpacity
             onPress={handleImagePick}

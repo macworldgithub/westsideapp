@@ -22,7 +22,7 @@ const getStatusColor = (status) => {
 };
 
 export default function WorkOrdersScreen() {
-    const navigation = useNavigation(); // ✅ Hook used here
+    const navigation = useNavigation(); 
 
     return (
         <View className="flex-1 bg-black px-4 pt-16">
@@ -30,13 +30,11 @@ export default function WorkOrdersScreen() {
             <View className="flex-row items-center justify-between mb-4">
                 <View className="flex-row items-center space-x-2">
                     {/* ✅ Wrapped Image in TouchableOpacity */}
-                    {/* <TouchableOpacity onPress={() => navigation.navigate('RegisteredCars')}> */}
+                    <TouchableOpacity onPress={() => navigation.navigate('RegisteredCars')}/>
                         <Image source={require('../../assets/back.png')} className="w-6 h-6" />
                     {/* </TouchableOpacity> */}
                     <Text className="text-white text-lg font-semibold">Work Orders</Text>
                 </View>
-
-                {/* ✅ Navigate to NewWorkOrder */}
                 <TouchableOpacity
                     className="bg-gray-200 px-4 py-1 rounded-md"
                     onPress={() => navigation.navigate('NewWorkOrder')}
@@ -58,7 +56,7 @@ export default function WorkOrdersScreen() {
             {/* Order Cards */}
             <ScrollView showsVerticalScrollIndicator={false}>
                 {orders.map((order, index) => (
-                    // ✅ Navigate to CarOrderDetails on card press
+                
                     <TouchableOpacity
                         key={index}
                         onPress={() => navigation.navigate('ViewServices')}
@@ -100,7 +98,7 @@ export default function WorkOrdersScreen() {
                             <TouchableOpacity
                                 className="bg-black rounded-full items-center justify-center"
                                 style={{ width: 80, height: 20 }}
-                                onPress={() => navigation.navigate('CarOrderDetails')} // Navigate to CarOrderDetails
+                                onPress={() => navigation.navigate('CarOrderDetails')} 
                             >
                                 <Text className="text-white text-xs">View</Text>
                             </TouchableOpacity>

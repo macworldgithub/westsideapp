@@ -18,7 +18,7 @@ export default function AccountSecurityScreen() {
         
         {/* Header */}
         <View className="flex-row items-center mb-6">
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
             <FontAwesome name="angle-left" size={24} color="white" />
           </TouchableOpacity>
           <Text className="text-white font-semibold text-lg ml-7">Account Security</Text>

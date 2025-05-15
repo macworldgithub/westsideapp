@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -9,13 +9,13 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
-} from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import { FontAwesome } from '@expo/vector-icons';
-
+} from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import { FontAwesome } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 export default function EditProfile() {
   const [avatar, setAvatar] = useState(null);
-
+  const navigation = useNavigation();
   const openCamera = async () => {
     const permission = await ImagePicker.requestCameraPermissionsAsync();
     if (permission.granted === false) {
@@ -37,11 +37,17 @@ export default function EditProfile() {
       >
         <ScrollView contentContainerStyle={{ paddingHorizontal: 20 }}>
           {/* Header */}
-          <TouchableOpacity className="flex-row items-center py-12">
-            <FontAwesome name="angle-left" size={24} color="white" />
-            <Text className="text-white text-lg ml-2 font-semibold">Edit Profile</Text>
-          </TouchableOpacity>
-
+          <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Profile")}
+              className="flex-row items-center py-12"
+            >
+              <FontAwesome name="angle-left" size={24} color="white" />
+              <Text className="text-white text-lg ml-4 font-semibold">
+                Edit Profile
+              </Text>
+            </TouchableOpacity>
+          </View>
           {/* Avatar with Camera Icon */}
           <View className="items-center my-6">
             <View className="w-28 h-28 rounded-full bg-[#3a3a3a] justify-center items-center relative">
@@ -65,17 +71,20 @@ export default function EditProfile() {
           </View>
 
           {/* Form Inputs */}
-          <View className="space-y-8"> {/* Increased spacing */}
+          <View className="space-y-8">
+            {" "}
+            {/* Increased spacing */}
             {/* Full Name */}
             <View>
-              <Text className="text-white mb-2 text-base text-start">Full name</Text>
+              <Text className="text-white mb-2 text-base text-start">
+                Full name
+              </Text>
               <TextInput
                 placeholder="Paul Walker"
                 placeholderTextColor="#ccc"
                 className="bg-black text-white px-5 py-4 rounded-xl text-lg" // Increased size
               />
             </View>
-
             {/* Email */}
             <View>
               <Text className="text-white mb-2 text-base">Email</Text>
@@ -86,7 +95,6 @@ export default function EditProfile() {
                 className="bg-black text-white px-5 py-4 rounded-xl text-lg opacity-50"
               />
             </View>
-
             {/* Phone Number */}
             <View>
               <Text className="text-white mb-2 text-base">Phone number</Text>
@@ -111,7 +119,9 @@ export default function EditProfile() {
         {/* Save Button Slightly Above Bottom */}
         <View className="px-5 pt-4 pb-48">
           <TouchableOpacity className="bg-black py-4 rounded-xl items-center">
-            <Text className="text-white text-base font-semibold">Save Changes</Text>
+            <Text className="text-white text-base font-semibold">
+              Save Changes
+            </Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>

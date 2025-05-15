@@ -22,7 +22,10 @@ export default function Profile() {
       {/* Header Row */}
       <View className="flex-row justify-between items-center px-4 mt-10">
         <Text className="text-white text-xl font-semibold">Profile</Text>
-        <TouchableOpacity className="bg-[#2f2f2f] px-6 py-3 rounded-lg">
+        <TouchableOpacity
+          className="bg-[#2f2f2f] px-6 py-3 rounded-lg"
+          onPress={() => navigation.navigate('Login')} // ✅ Navigate to Login
+        >
           <Text className="text-white text-sm">Logout</Text>
         </TouchableOpacity>
       </View>
@@ -40,7 +43,7 @@ export default function Profile() {
         {/* Menu Options */}
         <View className="w-[90%]">
           <MenuItem 
-            icon={<FontAwesome name="user" size={24} color="white" />} 
+            icon={<FontAwesome name="user" size={24} color="white"/>} 
             title="Edit Profile" 
             onPress={() => navigation.navigate('EditProfile')} 
           />
@@ -72,7 +75,7 @@ const MenuItem = ({ icon, title, onPress }) => (
   <TouchableOpacity className="bg-[#000000] flex-row items-center justify-between px-5 py-5 rounded-2xl" onPress={onPress}>
     <View className="flex-row items-center space-x-5">
       {icon}
-      <Text className="text-white text-base font-medium">{title}</Text>
+      <Text className="text-white text-base font-medium ml-4">{title}</Text>
     </View>
     <FontAwesome name="angle-right" size={20} color="white" />
   </TouchableOpacity>

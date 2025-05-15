@@ -1,14 +1,17 @@
-
-
 import React, { useState } from 'react';
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+
+
+import { useDispatch } from 'react-redux';
+import { setUser } from '../redux/Slices/authSlice'; 
 
 export default function Login({ onLogin }) {
   const [emailOrPhone, setEmailOrPhone] = useState('');
@@ -17,21 +20,34 @@ export default function Login({ onLogin }) {
   const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
 
+  const dispatch = useDispatch(); 
+
   const handleSignIn = () => {
     console.log('Email or Phone:', emailOrPhone);
     console.log('Password:', password);
     console.log('Remember Me:', rememberMe);
 
-    // Option 1: If using token-based auth flow (preferred)
-    if (onLogin) {
-      onLogin('dummy-token'); 
-    }
+    if (emailOrPhone.trim() !== '' && password.trim() !== '') {
+      if (onLogin) {
+        onLogin('dummy-token');
+      }
 
     
+      dispatch(
+        setUser({
+          name: 'John Doe',
+          email: emailOrPhone,
+        })
+      );
+
+      navigation.navigate('RegisteredCars');
+    } else {
+      Alert.alert('Missing Fields', 'Please enter both Email/Phone and Password.');
+    }
   };
 
   const handleForgotPassword = () => {
-    navigation.navigate('ForgotPassword'); // Adjust if needed
+    navigation.navigate('ForgotPassword');
   };
 
   return (

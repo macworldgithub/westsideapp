@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+  Modal,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import { launchImageLibrary } from 'react-native-image-picker';
+import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 import { useNavigation } from '@react-navigation/native'; // ✅ Import navigation
 
 const EditCarDetail = () => {
-  const navigation = useNavigation(); // ✅ Initialize navigation
-
+  const navigation = useNavigation();
   const [form, setForm] = useState({
     driverName: 'Paul',
     plate: '12345',
@@ -17,20 +24,31 @@ const EditCarDetail = () => {
     imageUri: Image.resolveAssetSource(require('../../assets/Car.png')).uri,
   });
 
+  const [modalVisible, setModalVisible] = useState(false); 
+
   const handleChange = (key, value) => {
     setForm(prev => ({ ...prev, [key]: value }));
   };
 
-  const handleImagePick = async () => {
+  const pickFromGallery = async () => {
     const result = await launchImageLibrary({ mediaType: 'photo' });
     if (!result.didCancel && result.assets?.length > 0) {
       handleChange('imageUri', result.assets[0].uri);
     }
+    setModalVisible(false);
+  };
+
+  const takePhoto = async () => {
+    const result = await launchCamera({ mediaType: 'photo' });
+    if (!result.didCancel && result.assets?.length > 0) {
+      handleChange('imageUri', result.assets[0].uri);
+    }
+    setModalVisible(false);
   };
 
   const handleSubmit = () => {
     console.log('Submitted Data:', form);
-    // Add API or navigation logic here
+    
   };
 
   return (
@@ -52,12 +70,36 @@ const EditCarDetail = () => {
           resizeMode="cover"
         />
         <TouchableOpacity
-          onPress={handleImagePick}
+          // 🔄 Updated: Show modal on press
+          onPress={() => setModalVisible(true)}
           className="absolute top-2 right-2 bg-black/70 p-2 rounded-full"
         >
           <Icon name="edit-2" size={18} color="#fff" />
         </TouchableOpacity>
       </View>
+
+      {/* Modal */}
+      <Modal
+        transparent
+        visible={modalVisible}
+        animationType="fade"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View className="flex-1 justify-center items-center bg-black/60">
+          <View className="bg-neutral-900 rounded-2xl p-6 w-72">
+            <Text className="text-white text-lg font-semibold mb-4">Change Photo</Text>
+            <TouchableOpacity className="mb-3" onPress={takePhoto}>
+              <Text className="text-white">📷 Take a Picture</Text>
+            </TouchableOpacity>
+            <TouchableOpacity className="mb-3" onPress={pickFromGallery}>
+              <Text className="text-white">🖼️ Pick from Gallery</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setModalVisible(false)}>
+              <Text className="text-red-400 mt-2">Cancel</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
 
       {/* Input Fields */}
       {[
