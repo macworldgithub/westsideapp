@@ -28,17 +28,31 @@ const NewCarRegistration = () => {
   };
 
   const handleImagePick = async () => {
-    const result = await launchImageLibrary({ mediaType: 'photo' });
-    if (!result.didCancel && result.assets?.length > 0) {
-      handleChange('imageUri', result.assets[0].uri);
-    }
+    launchImageLibrary(
+      {
+        mediaType: 'photo',
+        quality: 0.5,
+      },
+      res => {
+        if (!res.didCancel && res.assets?.length > 0) {
+          handleChange('imageUri', res.assets[0].uri);
+        }
+      }
+    );
   };
 
   const handleCaptureImage = async () => {
-    const result = await launchCamera({ mediaType: 'photo' });
-    if (!result.didCancel && result.assets?.length > 0) {
-      handleChange('imageUri', result.assets[0].uri);
-    }
+    launchCamera(
+      {
+        mediaType: 'photo',
+        quality: 0.5,
+      },
+      res => {
+        if (!res.didCancel && res.assets?.length > 0) {
+          handleChange('imageUri', res.assets[0].uri);
+        }
+      }
+    );
   };
 
   const handleSubmit = () => {
@@ -50,18 +64,16 @@ const NewCarRegistration = () => {
       className="flex-1 bg-black px-4 pt-10 pb-6"
       contentContainerStyle={{ paddingBottom: 40 }}
     >
-      <View className="flex-row">
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          className="mb-4 w-8"
-        >
+      {/* Header */}
+      <View className="flex-row items-center mb-6">
+        <TouchableOpacity onPress={() => navigation.goBack()} className="mr-4">
           <Image
-            source={require('../../assets/back.png')} // <-- Replace with your actual PNG path
+            source={require('../../assets/back.png')}
             style={{ width: 24, height: 24 }}
             resizeMode="contain"
           />
         </TouchableOpacity>
-        <Text className="text-white text-xl font-semibold mb-6">
+        <Text className="text-white text-xl font-semibold">
           New Car Registration
         </Text>
       </View>
@@ -86,7 +98,7 @@ const NewCarRegistration = () => {
         </View>
       ))}
 
-      {/* Note Field */}
+      {/* Note */}
       <View className="mb-4">
         <Text className="text-white mb-1">Note:</Text>
         <View className="bg-white rounded-xl px-4 pt-2 pb-2">
@@ -103,24 +115,24 @@ const NewCarRegistration = () => {
         </View>
       </View>
 
-      {/* Image Upload Section */}
+      {/* Image Upload */}
       <View className="mb-6">
         <Text className="text-white mb-2">Image Upload</Text>
         <View className="flex-row space-x-4">
           <TouchableOpacity
             onPress={handleImagePick}
-            className="flex-1 bg-gray-200 rounded-xl py-14 items-center justify-center"
+            className="flex-1 bg-gray-200 rounded-xl py-6 items-center justify-center"
           >
-            <MaterialCommunityIcons name="upload" size={38} color="black" />
-            <Text className="text-black font-semibold mt-2">Upload</Text>
+            <MaterialCommunityIcons name="upload" size={28} color="black" />
+            <Text className="text-black font-semibold mt-1 text-sm">Upload</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={handleCaptureImage}
-            className="flex-1 bg-gray-200 rounded-xl py-14 items-center justify-center ml-5"
+            className="flex-1 bg-gray-200 rounded-xl py-6 items-center justify-center ml-5"
           >
-            <MaterialCommunityIcons name="camera" size={38} color="black" />
-            <Text className="text-black font-semibold mt-2">Capture</Text>
+            <MaterialCommunityIcons name="camera" size={28} color="black" />
+            <Text className="text-black font-semibold mt-1 text-sm">Capture</Text>
           </TouchableOpacity>
         </View>
 
@@ -133,7 +145,7 @@ const NewCarRegistration = () => {
         )}
       </View>
 
-      {/* Submit Button */}
+      {/* Submit */}
       <TouchableOpacity
         className="bg-black py-3 rounded-xl items-center mt-6 border border-white"
         onPress={handleSubmit}
