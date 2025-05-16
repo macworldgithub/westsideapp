@@ -141,7 +141,7 @@ const NewCarRegistration = () => {
             source={{ uri: form.imageUri }}
             className="w-full h-28 mt-4 rounded-xl"
             resizeMode="cover"
-          />
+          />   
         )}
       </View>
 
