@@ -1,4 +1,4 @@
-// /screens/HistoryDetail.js
+
 import React from "react";
 import {
   SafeAreaView,
@@ -11,7 +11,7 @@ import {
 export default function HistoryDetail({ route, navigation }) {
   // get the item passed from HistoryList (if any)
   const item = {
-    // fallback dummy data
+    
     id: "0",
     date: "2025-01-01",
     description: "Sample Service",
