@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,57 +6,57 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-} from 'react-native';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import { useNavigation } from '@react-navigation/native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+} from "react-native";
+import { launchCamera, launchImageLibrary } from "react-native-image-picker";
+import { useNavigation } from "@react-navigation/native";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const NewCarRegistration = () => {
   const navigation = useNavigation();
   const [form, setForm] = useState({
-    driverName: '',
-    carPlate: '',
-    carName: '',
-    carModel: '',
-    carYear: '',
-    note: '',
+    driverName: "",
+    carPlate: "",
+    carName: "",
+    carModel: "",
+    carYear: "",
+    note: "",
     imageUri: null,
   });
 
   const handleChange = (key, value) => {
-    setForm(prev => ({ ...prev, [key]: value }));
+    setForm((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleImagePick = async () => {
-    launchImageLibrary(
-      {
-        mediaType: 'photo',
-        quality: 0.5,
-      },
-      res => {
-        if (!res.didCancel && res.assets?.length > 0) {
-          handleChange('imageUri', res.assets[0].uri);
-        }
+  const handleImagePick = () => {
+    launchImageLibrary({ mediaType: "photo", quality: 0.5 }, (response) => {
+      if (response.didCancel) return;
+      if (response.errorCode) {
+        console.warn("Image picker error:", response.errorMessage);
+        return;
       }
-    );
+      const asset = response.assets?.[0];
+      if (asset?.uri) {
+        handleChange("imageUri", asset.uri);
+      }
+    });
   };
 
-  const handleCaptureImage = async () => {
-    launchCamera(
-      {
-        mediaType: 'photo',
-        quality: 0.5,
-      },
-      res => {
-        if (!res.didCancel && res.assets?.length > 0) {
-          handleChange('imageUri', res.assets[0].uri);
-        }
+  const handleCaptureImage = () => {
+    launchCamera({ mediaType: "photo", quality: 0.5 }, (response) => {
+      if (response.didCancel) return;
+      if (response.errorCode) {
+        console.warn("Camera error:", response.errorMessage);
+        return;
       }
-    );
+      const asset = response.assets?.[0];
+      if (asset?.uri) {
+        handleChange("imageUri", asset.uri);
+      }
+    });
   };
 
   const handleSubmit = () => {
-    console.log('Form Data:', form);
+    console.log("Form Data:", form);
   };
 
   return (
@@ -68,7 +68,7 @@ const NewCarRegistration = () => {
       <View className="flex-row items-center mb-6">
         <TouchableOpacity onPress={() => navigation.goBack()} className="mr-4">
           <Image
-            source={require('../../assets/back.png')}
+            source={require("../../assets/back.png")}
             style={{ width: 24, height: 24 }}
             resizeMode="contain"
           />
@@ -80,12 +80,12 @@ const NewCarRegistration = () => {
 
       {/* Input Fields */}
       {[
-        { label: 'Driver Name', key: 'driverName' },
-        { label: 'Car Plate', key: 'carPlate' },
-        { label: 'Car Name', key: 'carName' },
-        { label: 'Car Model', key: 'carModel' },
-        { label: 'Car Year', key: 'carYear' },
-      ].map(field => (
+        { label: "Driver Name", key: "driverName" },
+        { label: "Car Plate", key: "carPlate" },
+        { label: "Car Name", key: "carName" },
+        { label: "Car Model", key: "carModel" },
+        { label: "Car Year", key: "carYear" },
+      ].map((field) => (
         <View key={field.key} className="mb-4">
           <Text className="text-white mb-1">{field.label}</Text>
           <TextInput
@@ -93,7 +93,7 @@ const NewCarRegistration = () => {
             placeholder={field.label}
             placeholderTextColor="#999"
             value={form[field.key]}
-            onChangeText={text => handleChange(field.key, text)}
+            onChangeText={(text) => handleChange(field.key, text)}
           />
         </View>
       ))}
@@ -110,7 +110,7 @@ const NewCarRegistration = () => {
             placeholder="Note......"
             placeholderTextColor="#999"
             value={form.note}
-            onChangeText={text => handleChange('note', text)}
+            onChangeText={(text) => handleChange("note", text)}
           />
         </View>
       </View>
@@ -124,7 +124,9 @@ const NewCarRegistration = () => {
             className="flex-1 bg-gray-200 rounded-xl py-6 items-center justify-center"
           >
             <MaterialCommunityIcons name="upload" size={28} color="black" />
-            <Text className="text-black font-semibold mt-1 text-sm">Upload</Text>
+            <Text className="text-black font-semibold mt-1 text-sm">
+              Upload
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -132,7 +134,9 @@ const NewCarRegistration = () => {
             className="flex-1 bg-gray-200 rounded-xl py-6 items-center justify-center ml-5"
           >
             <MaterialCommunityIcons name="camera" size={28} color="black" />
-            <Text className="text-black font-semibold mt-1 text-sm">Capture</Text>
+            <Text className="text-black font-semibold mt-1 text-sm">
+              Capture
+            </Text>
           </TouchableOpacity>
         </View>
 
@@ -141,13 +145,13 @@ const NewCarRegistration = () => {
             source={{ uri: form.imageUri }}
             className="w-full h-28 mt-4 rounded-xl"
             resizeMode="cover"
-          />   
+          />
         )}
       </View>
 
       {/* Submit */}
       <TouchableOpacity
-        className="bg-black py-3 rounded-xl items-center mt-6 border border-white"
+        className="bg-black py-3 rounded-xl items-center  border border-white"
         onPress={handleSubmit}
       >
         <Text className="text-white font-bold">Save</Text>
@@ -157,4 +161,3 @@ const NewCarRegistration = () => {
 };
 
 export default NewCarRegistration;
-
