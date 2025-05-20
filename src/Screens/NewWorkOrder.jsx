@@ -61,7 +61,11 @@ const NewWorkOrderScreen = () => {
     { key: "email", label: "Email", placeholder: "Enter email" },
     { key: "phone", label: "Phone No.", placeholder: "Enter phone number" },
     { key: "startDate", label: "Start Date", placeholder: "DD-MM-YYYY" },
-    { key: "finishDate", label: "Work Finish Date", placeholder: "DD-MM-YYYY" },
+    {
+      key: "finishDate",
+      label: "Work Finish Date",
+      placeholder: "DD-MM-YYYY",
+    },
     { key: "address", label: "Address", placeholder: "Enter address" },
     { key: "status", label: "Status", placeholder: "Enter status" },
   ];
@@ -107,20 +111,45 @@ const NewWorkOrderScreen = () => {
           </View>
         ))}
 
-        {/* Image Upload */}
-        <View className="mt-2 mb-6 relative">
+        {/* Image Upload Section */}
+        <View className="mt-2 mb-6">
           <Text className="text-white mb-2">Image Upload</Text>
-          <Image
-            source={{ uri: form.imageUri }}
-            className="w-full h-48 rounded-lg"
-            resizeMode="cover"
-          />
-          <TouchableOpacity
-            onPress={() => setModalVisible(true)}
-            className="absolute top-2 right-2 bg-black/70 p-2 rounded-full"
-          >
-            <Icon name="edit-2" size={18} color="white" />
-          </TouchableOpacity>
+
+          {form.imageUri ? (
+            <View className="relative">
+              <Image
+                source={{ uri: form.imageUri }}
+                className="w-full h-48 rounded-lg"
+                resizeMode="cover"
+              />
+
+              {/* Edit Button */}
+              <TouchableOpacity
+                onPress={() => setModalVisible(true)}
+                className="absolute top-2 right-2 bg-black/70 p-2 rounded-full"
+              >
+                <Icon name="edit-2" size={18} color="white" />
+              </TouchableOpacity>
+
+              {/* Delete Button */}
+              <TouchableOpacity
+                onPress={() =>
+                  setForm((prev) => ({ ...prev, imageUri: null }))
+                }
+                className="absolute top-2 left-2 bg-black/70 p-2 rounded-full"
+              >
+                <Icon name="trash-2" size={18} color="white" />
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <TouchableOpacity
+              onPress={() => setModalVisible(true)}
+              className="border border-dashed border-gray-600 rounded-lg h-48 items-center justify-center"
+            >
+              <Icon name="plus" size={28} color="gray" />
+              <Text className="text-gray-400 mt-2">Add Image</Text>
+            </TouchableOpacity>
+          )}
         </View>
 
         {/* Save Button */}
@@ -132,7 +161,7 @@ const NewWorkOrderScreen = () => {
         </TouchableOpacity>
       </ScrollView>
 
-      {/* Custom Image Modal */}
+      {/* Image Picker Modal */}
       <EditPicModal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}

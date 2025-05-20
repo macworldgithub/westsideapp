@@ -50,7 +50,7 @@ export default function Chat() {
         contentContainerStyle={{ padding: 12 }}
       />
 
-      <View className="flex-row items-center p-2 border-t border-gray-200">
+      <View className="flex-row items-center p-2 border-t border-gray-200 mb-44">
         <TextInput
           className="flex-1 border rounded-full px-4 py-2 mr-2 bg-gray-100"
           placeholder="Type a message"

@@ -13,9 +13,11 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+
 export default function EditProfile() {
   const [avatar, setAvatar] = useState(null);
   const navigation = useNavigation();
+
   const openCamera = async () => {
     const permission = await ImagePicker.requestCameraPermissionsAsync();
     if (permission.granted === false) {
@@ -48,6 +50,7 @@ export default function EditProfile() {
               </Text>
             </TouchableOpacity>
           </View>
+
           {/* Avatar with Camera Icon */}
           <View className="items-center my-6">
             <View className="w-28 h-28 rounded-full bg-[#3a3a3a] justify-center items-center relative">
@@ -60,7 +63,7 @@ export default function EditProfile() {
                 <FontAwesome name="user" size={40} color="white" />
               )}
 
-              {/* Camera Icon */}
+              {/* Camera Icon (Original Style) */}
               <TouchableOpacity
                 onPress={openCamera}
                 className="absolute bottom-0 right-0 bg-black p-2 rounded-full border border-white"
@@ -72,19 +75,16 @@ export default function EditProfile() {
 
           {/* Form Inputs */}
           <View className="space-y-8">
-            {" "}
-            {/* Increased spacing */}
             {/* Full Name */}
             <View>
-              <Text className="text-white mb-2 text-base text-start">
-                Full name
-              </Text>
+              <Text className="text-white mb-2 text-base">Full name</Text>
               <TextInput
                 placeholder="Paul Walker"
                 placeholderTextColor="#ccc"
-                className="bg-black text-white px-5 py-4 rounded-xl text-lg" // Increased size
+                className="bg-black text-white px-5 py-4 rounded-xl text-lg"
               />
             </View>
+
             {/* Email */}
             <View>
               <Text className="text-white mb-2 text-base">Email</Text>
@@ -95,6 +95,7 @@ export default function EditProfile() {
                 className="bg-black text-white px-5 py-4 rounded-xl text-lg opacity-50"
               />
             </View>
+
             {/* Phone Number */}
             <View>
               <Text className="text-white mb-2 text-base">Phone number</Text>
@@ -114,16 +115,16 @@ export default function EditProfile() {
               </View>
             </View>
           </View>
-        </ScrollView>
 
-        {/* Save Button Slightly Above Bottom */}
-        <View className="px-5 pt-4 pb-48">
-          <TouchableOpacity className="bg-black py-4 rounded-xl items-center">
-            <Text className="text-white text-base font-semibold">
-              Save Changes
-            </Text>
-          </TouchableOpacity>
-        </View>
+          {/* Save Button */}
+          <View className="px-5 pt-12 pb-48">
+            <TouchableOpacity className="bg-black py-4 rounded-xl items-center border border-gray-600">
+              <Text className="text-white text-base font-semibold">
+                Save Changes
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

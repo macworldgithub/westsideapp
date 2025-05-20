@@ -27,7 +27,7 @@ export default function Login({ onLogin }) {
         onLogin('dummy-token');
       }
 
-      navigation.navigate('RegisteredCars');
+     // navigation.navigate('RegisteredCars');
     } else {
       Alert.alert('Missing Fields', 'Please enter both Email/Phone and Password.');
     }
